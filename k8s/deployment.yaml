@@ -21,14 +21,13 @@ spec:
     spec:
       containers:
         - name: app-ts
-          image: joao615/app-ts:v3
+          image: joao615/app-ts:v4
           imagePullPolicy: IfNotPresent
-          env:
-            - name: APP
-              valueFrom:
-                configMapKeyRef:
-                  name: app-ts
-                  key: app-name
+          envFrom:
+            - configMapRef:
+                name: app-ts
+            - secretRef:
+                name: app-ts-secrets
           ports:
             - containerPort: 3000
           resources:
