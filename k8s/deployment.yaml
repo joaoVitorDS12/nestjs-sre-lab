@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: app-ts
-          image: joao615/app-ts:v4
+          image: joao615/app-ts:v5
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
