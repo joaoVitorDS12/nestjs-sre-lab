@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: app-ts
-          image: joao615/app-ts:v8
+          image: joao615/app-ts:v9
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
@@ -38,7 +38,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1 # 1 Segundo de timeout, n somente 1 timeout
             periodSeconds: 10 # 10 Segundos tolera até 3 falhas, 1 sucesso e 1 segundo de timeout
-            initialDelaySeconds: 30
+            initialDelaySeconds: 10
           readinessProbe:
             httpGet:
               path: /readyz
@@ -47,7 +47,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
             periodSeconds: 15
-            initialDelaySeconds: 10
+            initialDelaySeconds: 5
           livenessProbe:
             httpGet:
               path: /healthz
@@ -56,7 +56,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
             periodSeconds: 10
-            initialDelaySeconds: 10
+            initialDelaySeconds: 5
           resources:
             requests:
               cpu: 400m
